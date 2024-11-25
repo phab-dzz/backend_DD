@@ -7,7 +7,7 @@ export const getBooks = () => new Promise(async (resolve, reject) => {
         const response = await db.Book.findAll(
             {
                 raw: true,
-                attributes: ['name', 'author', 'rating', 'description', 'genre', 'durating', 'imgsrc', 'audioSrc'],
+                attributes: ['name', 'author', 'rating', 'description', 'genre', 'durating', 'imgsrc', 'audioSrc', 'chapter'],
             }
 
         );
@@ -27,7 +27,7 @@ export const getBookbyName = (name) => new Promise(async (resolve, reject) => {
                 name: name
             },
             raw: true,
-            attributes: ['name', 'author', 'rating', 'description', 'genre', 'durating', 'imgsrc', 'audioSrc'],
+            attributes: ['name', 'author', 'rating', 'description', 'genre', 'durating', 'imgsrc', 'audioSrc', 'chapter'],
         });
         resolve(books);
     }
@@ -43,7 +43,7 @@ export const getBookByGenre = (genre) => new Promise(async (resolve, reject) => 
                 genre: genre
             },
             raw: true,
-            attributes: ['name', 'author', 'rating', 'description', 'genre', 'durating', 'imgsrc', 'audioSrc'],
+            attributes: ['name', 'author', 'rating', 'description', 'genre', 'durating', 'imgsrc', 'audioSrc', 'chapter'],
         });
         resolve(books);
     }
@@ -55,7 +55,7 @@ export const getBooksByranking = () => new Promise(async (resolve, reject) => {
     try {
         const books = await db.Book.findAll({
             raw: true,
-            attributes: ['name', 'author', 'rating', 'description', 'genre', 'durating', 'imgsrc', 'audioSrc'],
+            attributes: ['name', 'author', 'rating', 'description', 'genre', 'durating', 'imgsrc', 'audioSrc', 'chapter'],
             order: [['rating', 'DESC']], // Sắp xếp theo rating giảm dần
             limit: 5, // Giới hạn 5 kết quả đầu tiên
 

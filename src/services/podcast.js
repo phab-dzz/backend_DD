@@ -4,7 +4,7 @@ export const getPodcasts = () => new Promise(async (resolve, reject) => {
         const response = await db.Podcast.findAll(
             {
                 raw: true,
-                attributes: ['name', 'host', 'rating', 'description', 'genre', 'imgsrc', 'audioSrc'],
+                attributes: ['name', 'host', 'rating', 'description', 'genre', 'imgsrc', 'audioSrc', 'episode'],
             }
 
         );
@@ -22,7 +22,7 @@ export const getPodcastbyName = (name) => new Promise(async (resolve, reject) =>
                 name: name
             },
             raw: true,
-            attributes: ['name', 'host', 'rating', 'description', 'genre', 'imgsrc', 'audioSrc'],
+            attributes: ['name', 'host', 'rating', 'description', 'genre', 'imgsrc', 'audioSrc', 'episode'],
         });
         resolve(podcasts);
     }
@@ -38,7 +38,7 @@ export const getPodcastByGenre = (genre) => new Promise(async (resolve, reject) 
                 genre: genre
             },
             raw: true,
-            attributes: ['name', 'host', 'rating', 'description', 'genre', 'imgsrc', 'audioSrc'],
+            attributes: ['name', 'host', 'rating', 'description', 'genre', 'imgsrc', 'audioSrc', 'episode'],
         });
         resolve(podcasts);
     }
