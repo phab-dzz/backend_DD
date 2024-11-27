@@ -7,7 +7,12 @@ export const getUserPodcastsWithUser = (userId) => new Promise(async (resolve, r
         const response = await db.UserPodcast.findAll({
             where: { userId },
             raw: true,
+            include: {
+                model: db.Podcast, as: 'podcast',
+                attattributes: ['name', 'host', 'rating', 'description', 'genre', 'imgsrc', 'audioSrc', 'episode'],
+            },
             attributes: ['podcastId', 'userId', 'rating', 'status', 'startAt', 'finishedAt'],
+
         });
         resolve(response);
     }

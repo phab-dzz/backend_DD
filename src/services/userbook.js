@@ -7,6 +7,10 @@ export const getUserBooksWithUser = (userId) => new Promise(async (resolve, reje
         const response = await db.UserBook.findAll({
             where: { userId },
             raw: true,
+            include: {
+                model: db.Book, as: 'book',
+                attributes: ['name', 'author', 'rating', 'description', 'genre', 'durating', 'imgsrc', 'audioSrc', 'chapter'],
+            },
             attributes: ['bookId', 'userId', 'rating', 'status', 'startAt', 'finishedAt'],
         });
         resolve(response);

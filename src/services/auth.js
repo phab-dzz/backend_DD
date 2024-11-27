@@ -137,7 +137,8 @@ export const loginService = async ({ email, password }) => {
             return {
                 err: 0,
                 message: 'User logged in successfully',
-                token: token
+                token: token,
+                data: response,
             };
         } else {
             return {

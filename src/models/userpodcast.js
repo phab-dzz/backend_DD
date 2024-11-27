@@ -12,10 +12,10 @@ module.exports = (sequelize, DataTypes) => {
         static associate(models) {
             // define association here
             UserPodcast.belongsTo(models.User, {
-                foreignKey: 'userId', targetKey: 'userId', as: 'user'
+                foreignKey: 'userId', targetKey: 'id', as: 'user'
             });
             UserPodcast.belongsTo(models.Podcast, {
-                foreignKey: 'podcastId', targetKey: 'podcastId', as: 'podcast'
+                foreignKey: 'podcastId', targetKey: 'id', as: 'podcast'
             });
 
         }
