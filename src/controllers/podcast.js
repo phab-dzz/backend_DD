@@ -40,3 +40,17 @@ export const getPodcastByGenreController = async (req, res) => {
         });
     }
 }
+export const findPodcastAdvancesController = async (req, res) => {
+    try {
+        const key = req.query.key;
+        const podcasts = await podcastService.findPodcastAdvances(key);
+        res.status(200).send(podcasts);
+    }
+    catch (error) {
+        res.status(500).json({
+            err: -1,
+            message: 'fail to find podcasts',
+            data: error
+        });
+    }
+}

@@ -5,4 +5,5 @@ router.get('/all', booksController.getBooksController);
 router.get('/name', booksController.getBookbyNameController);
 router.get('/genre', booksController.getBookByGenreController);
 router.get('/ranking', booksController.getBooksByrankingController);
+router.get('/search', booksController.getBookByAdvancesearchController);
 export default router;

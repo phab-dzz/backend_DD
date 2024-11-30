@@ -1,6 +1,7 @@
 import { where } from "sequelize";
 import db from "../models";
 import { raw } from "body-parser";
+const { Op } = require('sequelize');
 
 export const getBooks = () => new Promise(async (resolve, reject) => {
     try {
@@ -75,4 +76,30 @@ export const getBooksByranking = () => new Promise(async (resolve, reject) => {
         reject(error);
     }
 });
+export const findBookAdvances = (key) => new Promise(async (resolve, reject) => {
+    const columns = ['name', 'author', 'description', 'genre', 'chapter'];
+    if (!key) {
+        return resolve([]);
+    }
+    const conditions = columns.map(column => ({
+        [column]: { [Op.like]: `%${key}%` }
+    }));
+    try {
+        const books = await db.Book.findAll({
+            where: {
+
+                [Op.or]: conditions
+            },
+            raw: true,
+            attributes: ['name', 'author', 'rating', 'description', 'genre', 'durating', 'imgsrc', 'audioSrc', 'chapter'],
+        });
+        resolve(books);
+    }
+    catch (error) {
+        reject(error);
+    }
+}
+
+)
+
 

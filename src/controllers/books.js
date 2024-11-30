@@ -56,4 +56,20 @@ export const getBooksByrankingController = async (req, res) => {
         });
     }
 }
+export const getBookByAdvancesearchController = async (req, res) => {
+    const name = req.query.name;
+    console.log(name);
+    try {
+        const books = await booksService.findBookAdvances(name);
+        console.log("result" + books);
+        res.status(200).send(books);
+    }
+    catch (error) {
+        res.status(500).json({
+            err: -1,
+            message: 'fail to get booksAdvanceSearch',
+            data: error
+        });
+    }
+}
 
